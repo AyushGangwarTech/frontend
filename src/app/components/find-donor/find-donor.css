@@ -1,0 +1,4 @@
+.donor-card:hover {
+  transform: translateY(-4px);
+  transition: 0.25s ease-in-out;
+}

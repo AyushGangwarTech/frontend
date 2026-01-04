@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-red: #E63946;
+  --dark-red: #B11226;
+  --light-bg: #F8F9FA;
+  --dark-text: #343A40;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+}
+
+.btn-primary {
+  background-color: var(--primary-red);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--dark-red);
+}
+/* ================================
+   GLOBAL RESPONSIVE SETTINGS
+================================ */
+
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.btn {
+  border-radius: 0.6rem;
+}
+
+.card {
+  border-radius: 1rem;
+}

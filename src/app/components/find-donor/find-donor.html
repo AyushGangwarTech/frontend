@@ -1,0 +1,113 @@
+<div class="container-fluid py-5">
+
+  <!-- Header + Search -->
+  <div class="row justify-content-center mb-4">
+    <div class="col-xl-8 col-lg-9 col-md-10 col-12">
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Find Blood Donors</h2>
+        <button class="btn btn-outline-secondary" (click)="goBack()">
+          ← Back to Dashboard
+        </button>
+      </div>
+
+      <div class="card p-3 shadow">
+        <form (ngSubmit)="search()">
+          <div class="row g-2 align-items-end">
+
+            <!-- City -->
+            <div class="col-md-5 col-12">
+              <label>City</label>
+              <input class="form-control" type="text" [(ngModel)]="city" name="city" (ngModelChange)="onInputChange()"
+                placeholder="Enter city">
+            </div>
+
+            <!-- Blood Group -->
+            <div class="col-md-4 col-12">
+              <label>Blood Group</label>
+              <select class="form-select" [(ngModel)]="bloodGroup" name="bloodGroup" (ngModelChange)="onInputChange()">
+                <option value="">Select</option>
+                @for (bg of bloodgroups; track bg) {
+                <option [value]="bg">{{ bg }}</option>
+                }
+              </select>
+            </div>
+
+            <!-- Search Button -->
+            <div class="col-md-3 col-12">
+              <button type="submit" class="btn btn-primary w-100">
+                Search
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Donor Results -->
+<div class="row g-3">
+
+  @if (searched && donors().length === 0) {
+  <div class="col-12 text-center">
+    <div class="alert alert-warning">
+      No donors found
+    </div>
+  </div>
+  }
+
+  @if (donors().length > 0) {
+  <h3 class="mb-3">Available Donors</h3>
+
+  @for (donor of donors(); track donor._id) {
+  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+
+    <div class="card h-100 shadow-sm donor-card">
+      <div class="card-body">
+
+        <h5 class="card-title">{{ donor.name }}</h5>
+
+        <span class="badge bg-danger mb-2">
+          {{ donor.bloodGroup }}
+        </span>
+
+        <p class="mb-1">
+          <strong>City:</strong> {{ donor.city }}
+        </p>
+
+        
+        <p class="mb-1">
+          <strong>Phone:</strong> {{ donor.phone }}
+        </p>
+        <p class="mb-1">
+          <strong>Email:</strong> {{ donor.email }}
+        </p>
+
+
+        <!-- Request Logic -->
+        @if (!donor.requested) {
+        <p class="mb-1">
+          <strong>Status:</strong> Available
+        </p>
+        <button class="btn btn-outline-primary w-100" (click)="requestBlood(donor)">
+          Request Blood
+        </button>
+        } @else {
+        <p class="text-success text-center mt-2">
+          Request Sent
+        </p>
+        }
+
+      </div>
+    </div>
+
+  </div>
+  }
+  }
+
+</div>
+
+
+
