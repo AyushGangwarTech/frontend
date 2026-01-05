@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class User {
   
-  private apiUrl = 'http://localhost:3000/api/users';
+  private apiUrl = 'https://backend-6uyo.vercel.app/api/users';
 
   constructor(private http: HttpClient) {}
 
