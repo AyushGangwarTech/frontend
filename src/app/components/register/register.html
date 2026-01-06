@@ -1,112 +1,89 @@
-<div class="container-fluid py-5">
-  <div class="row justify-content-center">
-    <div class="col-xl-6 col-lg-7 col-md-9 col-sm-9 col-sm-12">
+<div class="back">
+  <div class="container-fluid py-5">
+    <div class="row justify-content-center">
+      <div class="col-xl-6 col-lg-7 col-md-9 col-sm-9 col-sm-12">
 
-      <h2 class="text-center mb-4">Registration</h2>
+        <h2 class="text-center mb-4">Registration</h2>
 
-      <form class="card p-4 shadow-lg" #regForm="ngForm" (ngSubmit)="register(regForm)">
-        <div class="row g-3"> 
-        
-          <div class="col-md-6 col-12">
-            <label>Name</label>
-            <input class="form-control" [class.is-invalid]="name.invalid && name.touched"
-            type="text"
-            name="name"
-            [(ngModel)]="user.name"
-            required
-            #name="ngModel">
-            @if (name.invalid && name.touched) {
-             <small class="text-danger">Name is required</small>
-            }
-          </div>
+        <form class="card p-4 shadow-lg" #regForm="ngForm" (ngSubmit)="register(regForm)">
+          <div class="row g-3">
 
-          <div class="col-md-6 col-12">
-            <label>Age</label>
-            <input class="form-control" [class.is-invalid]="age.invalid && age.touched"
-            type="number"
-            name="age"
-            [(ngModel)]="user.age"
-            required
-            min="1"
-            #age="ngModel">
-            @if (age.invalid && age.touched) {
-             <small class="text-danger">Enter valid age</small>
-            }
-          </div>
+            <div class="col-md-6 col-12">
+              <label>Name</label>
+              <input class="form-control" [class.is-invalid]="name.invalid && name.touched" type="text" name="name"
+                [(ngModel)]="user.name" required #name="ngModel">
+              @if (name.invalid && name.touched) {
+              <small class="text-danger">Name is required</small>
+              }
+            </div>
 
-          <div class="col-md-6 col-12"><label>Blood Group</label>
-            <select class="form-select" [class.is-invalid]="bloodGroup.invalid && bloodGroup.touched"
-             name="bloodGroup"
-             [(ngModel)]="user.bloodGroup"
-             required
-             #bloodGroup="ngModel">
-             <option value="">Select blood group</option>
-             @for (bg of bloodgroups; track bg) {
-              <option [value]="bg">{{ bg }}</option>
-             }
-            </select>
-            @if (bloodGroup.invalid && bloodGroup.touched) {
-             <small class="text-danger">Blood group is required</small>
-            }
-          </div> 
-      
+            <div class="col-md-6 col-12">
+              <label>Age</label>
+              <input class="form-control" [class.is-invalid]="age.invalid && age.touched" type="number" name="age"
+                [(ngModel)]="user.age" required min="1" #age="ngModel">
+              @if (age.invalid && age.touched) {
+              <small class="text-danger">Enter valid age</small>
+              }
+            </div>
 
-          <div class="col-md-6 col-12">
-            <label>City</label>
-             <input class="form-control" [class.is-invalid]="city.invalid && city.touched"
-             type="text"
-             name="city"
-             [(ngModel)]="user.city"
-             required
-             #city="ngModel">
-             @if (city.invalid && city.touched) {
+            <div class="col-md-6 col-12"><label>Blood Group</label>
+              <select class="form-select" [class.is-invalid]="bloodGroup.invalid && bloodGroup.touched"
+                name="bloodGroup" [(ngModel)]="user.bloodGroup" required #bloodGroup="ngModel">
+                <option value="">Select blood group</option>
+                @for (bg of bloodgroups; track bg) {
+                <option [value]="bg">{{ bg }}</option>
+                }
+              </select>
+              @if (bloodGroup.invalid && bloodGroup.touched) {
+              <small class="text-danger">Blood group is required</small>
+              }
+            </div>
+
+
+            <div class="col-md-6 col-12">
+              <label>City</label>
+              <input class="form-control" [class.is-invalid]="city.invalid && city.touched" type="text" name="city"
+                [(ngModel)]="user.city" required #city="ngModel">
+              @if (city.invalid && city.touched) {
               <small class="text-danger">City is required</small>
-             }
-          </div>
-          <div class="col-md-6 col-12">
-            <label>Phone Number</label>
-             <input class="form-control" [class.is-invalid]="phone.invalid && phone.touched"
-             type="text"
-             name="phone"
-             [(ngModel)]="user.phone"
-             required
-             pattern="^[0-9]{10}$"
-             #phone="ngModel">
-             @if (phone.invalid && phone.touched) {
+              }
+            </div>
+            <div class="col-md-6 col-12">
+              <label>Phone Number</label>
+              <input class="form-control" [class.is-invalid]="phone.invalid && phone.touched" type="text" name="phone"
+                [(ngModel)]="user.phone" required pattern="^[0-9]{10}$" #phone="ngModel">
+              @if (phone.invalid && phone.touched) {
               <small class="text-danger">Enter valid 10-digit phone number</small>
-             }
-          </div>
+              }
+            </div>
 
-          <div class="col-md-6 col-12">
-            <label>Email</label>
-             <input class="form-control" [class.is-invalid]="email.invalid && email.touched"
-             type="email"
-             name="email"
-             [(ngModel)]="user.email"
-             required
-             #email="ngModel">
-             @if (email.invalid && email.touched) {
+            <div class="col-md-6 col-12">
+              <label>Email</label>
+              <input class="form-control" [class.is-invalid]="email.invalid && email.touched" type="email" name="email"
+                [(ngModel)]="user.email" required #email="ngModel">
+              @if (email.invalid && email.touched) {
               <small class="text-danger">Enter valid email address</small>
-             }
-          </div>
+              }
+            </div>
 
-          <div class="col-12 form-check mt-2">
-            <input class="form-check-input" type="checkbox"/>
-            <label class="form-check-label">
-              I agree to be contacted for blood donation
-            </label>
-          </div>
+            <div class="col-12 form-check mt-2">
+              <input class="form-check-input" type="checkbox" />
+              <label class="form-check-label">
+                I agree to be contacted for blood donation
+              </label>
+            </div>
 
-          <div class="col-12 text-center mt-3">
-            <button class="btn btn-primary btn-lg w-100" type="submit" [disabled]="regForm.invalid">
-               Register
-             </button>
-          </div>
+            <div class="col-12 text-center mt-3">
+              <button class="btn btn-primary btn-lg w-100" type="submit" [disabled]="regForm.invalid">
+                Register
+              </button>
+            </div>
 
-             
-        </div>
-      </form>
-    
+
+          </div>
+        </form>
+
+      </div>
     </div>
   </div>
 </div>
